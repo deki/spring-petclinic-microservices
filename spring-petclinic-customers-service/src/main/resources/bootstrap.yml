@@ -6,6 +6,14 @@ spring:
     name: customers-service
 ---
 spring:
+  profiles: test,another-test
+  cloud:
+    config:
+      discovery:
+        enabled: false
+eureka.client.enabled: false
+---
+spring:
   profiles: docker
   cloud:
     config:
