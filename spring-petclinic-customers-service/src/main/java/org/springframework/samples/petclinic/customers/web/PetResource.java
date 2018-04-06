@@ -53,7 +53,7 @@ class PetResource {
         @PathVariable("ownerId") int ownerId) {
 
         final Pet pet = new Pet();
-        final Owner owner = ownerRepository.findOne(ownerId);
+        final Owner owner = ownerRepository.getOne(ownerId);
         owner.addPet(pet);
 
         save(pet, petRequest);
@@ -63,7 +63,7 @@ class PetResource {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Monitored
     public void processUpdateForm(@RequestBody PetRequest petRequest) {
-        save(petRepository.findOne(petRequest.getId()), petRequest);
+        save(petRepository.getOne(petRequest.getId()), petRequest);
     }
 
     private void save(final Pet pet, final PetRequest petRequest) {
@@ -80,7 +80,7 @@ class PetResource {
 
     @GetMapping("owners/*/pets/{petId}")
     public PetDetails findPet(@PathVariable("petId") int petId) {
-        return new PetDetails(petRepository.findOne(petId));
+        return new PetDetails(petRepository.getOne(petId));
     }
 
 }

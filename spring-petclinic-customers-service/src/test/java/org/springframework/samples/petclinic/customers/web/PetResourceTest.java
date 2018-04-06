@@ -43,7 +43,7 @@ public class PetResourceTest {
 
         Pet pet = setupPet();
 
-        given(petRepository.findOne(2)).willReturn(pet);
+        given(petRepository.getOne(2)).willReturn(pet);
 
 
         mvc.perform(get("/owners/2/pets/2.json").accept(MediaType.APPLICATION_JSON))

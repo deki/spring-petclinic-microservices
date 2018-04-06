@@ -40,7 +40,7 @@ public class VisitResourceDatabaseTest {
 
     @Test
     public void shouldGetAListOfVetsInJSonFormat() throws Exception {
-        Visit vet = visitRepository.findOne(1);
+        Visit vet = visitRepository.getOne(1);
         assertThat(visitRepository.findAll()).contains(vet);
     }
 }
